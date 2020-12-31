@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2020/12/30 21:00:24 by flohrel          ###   ########.fr       */
+/*   Updated: 2020/12/31 17:23:52 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include <stdarg.h>
 # include "flag.h"
 
-typedef struct	s_lst
+# define SUCCESS	0
+# define ERROR		-1
+# define FALSE		0
+# define TRUE		1
 
-	void			*data;
-	struct s_lst	*next;
-}				t_lst;
+typedef char	t_bool;
 
 typedef struct	s_param
 {
@@ -28,6 +29,7 @@ typedef struct	s_param
 	char	flags;
 	size_t	width;
 	size_t	precision;
+	char	*s;
 }				t_param;
 
 # endif
