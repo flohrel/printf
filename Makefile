@@ -7,9 +7,13 @@ NAME		=	libftprintf.a
 SRCDIR		=	src
 INCDIR		=	incld
 OBJDIR		=	obj
+LIBDIR		=	lib
 
-SRC			:=	$(wildcard $(SRCDIR)/*.c)
-OBJ			:=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+SRC			=	printf.c \
+				parse.c \
+				format.c \
+				display.c
+OBJ			=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
@@ -23,21 +27,21 @@ RM			=	/bin/rm -rf
 ## Rules ##
 ###########
 
-.PHONY:			all bonus clean fclean re so
+.PHONY:			all bonus clean fclean re
 
 all:			$(NAME)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
-				$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
+				$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@ -L./$(LIBDIR) -lft
 
 $(NAME):		$(OBJ)
 				$(AR) $(ARFLAGS) $@ $^
 
-$(OBJDIR):
-				mkdir $@
+bonus:
+				@make all OBJ="$(OBJ) $(BOBJ)"
 
 clean:
-				$(RM) $(OBJ)
+				$(RM) $(OBJ) $(BOBJ)
 
 fclean:			clean
 				$(RM) $(OBJDIR) $(NAME)
