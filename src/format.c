@@ -6,30 +6,13 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 16:50:18 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:36:02 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	g_types[9] = "cspdiuxX";
-int		(*g_setf[])(va_list, t_param *) = { set_char, set_str, set_ul, set_int, set_uint, set_hex };
-
-int		set_buffer(va_list *args, t_param *arg, const char **str)
-{
-	size_t	len;
-	char	*s;
-
-	if (arg->type == 1)
-	{
-		s = va_arg(args, (char *));
-		if (CHK_FLAG(arg->flags, PREC))
-			len = arg->precision + 1;
-		else
-			len = ft_strlen(s) + 1;
-		arg->s = malloc(sizeof(char) * len);
-	}
-}
+char	*(*g_setf[])(va_list *, t_param *) = { set_char, set_str, set_ul, set_int, set_uint, set_hex };
 
 int		format_output(va_list *args, t_param *arg)
 {
@@ -40,7 +23,7 @@ int		format_output(va_list *args, t_param *arg)
 	type = arg->type;
 	if (type == 0)
 		arg->s = g_setf[0](args, arg);
-	else if (type == 1)
+/*	else if (type == 1)
 		arg->s = g_setf[1](args, arg);
 	else if (type == 2)
 		arg->s = g_setf[2](args, arg);
@@ -49,8 +32,9 @@ int		format_output(va_list *args, t_param *arg)
 	else if (type == 5)
 		arg->s = g_setf[4](args, arg);
 	else if (type == 6 || type == 7)
-		arg->s = g_setf[5](args, arg);
-	if (!s)
+		arg->s = g_setf[5](args, arg);*/
+	if (!arg->s)
 		return (ERROR);
+	printf("%s\n", arg->s);
 	return (0);
 }

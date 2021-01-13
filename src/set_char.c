@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:50:41 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 16:56:51 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:41:16 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@ char	*set_char(va_list *args, t_param *arg)
 {
 	char	c;
 	char	*str;
+	int		len;
 
-	c = va_arg(args, char);
-	str = malloc(sizeof(char) * 2);
+	c = va_arg(*args, int);
+	len = arg->width;
+	if (len < 1)
+		len = 1;
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
+	ft_memset(str, ' ', len);
+	if (CHK_FLAG(arg->flags, LEFT))
+		str[0] = c;
+	else
+		str[len - 1] = c;
+	str[len] = '\0';
 	return (str);
 }

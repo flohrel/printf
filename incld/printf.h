@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 16:52:30 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:35:41 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct	s_param
 	int		flags;
 	size_t	width;
 	size_t	precision;
-	char	*str;
+	char	*s;
 }				t_param;
 
 extern char		g_types[9];
-extern int		(*g_setf[])(va_list, t_param);
+extern char		*(*g_setf[])(va_list *, t_param *);
 
 int				ft_printf(const char *str, ...);
 int				parse_param(va_list *args, t_param *arg, const char **str);

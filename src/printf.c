@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 16:57:20 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:41:09 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_param(t_param *arg)
 	arg->flags = 0;
 	arg->width = 0;
 	arg->precision = 0;
-	arg->str = NULL;
+	arg->s = NULL;
 }
 
 int		ft_printf(const char *str, ...)
@@ -36,11 +36,10 @@ int		ft_printf(const char *str, ...)
 			init_param(&arg);
 			if (parse_param(&args, &arg, &str) == ERROR)
 				return (ERROR);
-			if (format_output(&args, &arg, &str) == ERROR)
+			if (format_output(&args, &arg) == ERROR)
 				return (ERROR);				// FUNCTION POINTER w/ arg->type + malloc arg.s + set arg.s
 //			count += out(s, sizeof(char *));
 			free(arg.s);
-			printf("type=%-5d\tflags=%-5d\twidth=%-5lu\tprecision=%-5lu\n", arg.type, arg.flags, arg.width, arg.precision);
 		}
 //		else
 //			count += out(*str, sizeof(char));
@@ -49,3 +48,4 @@ int		ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
+// printf("type=%-5d\tflags=%-5d\twidth=%-5lu\tprecision=%-5lu\n", arg->type, arg->flags, arg->width, arg->precision);
