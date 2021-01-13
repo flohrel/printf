@@ -56,5 +56,5 @@ rsrc/
 archive/
 tester/
 
-# printf project files
-exemple.c
+# Vim swap
+*.sw*
