@@ -4,20 +4,18 @@
 
 NAME		=	libftprintf.a
 
-SRCDIR		=	src
-INCDIR		=	incld
-OBJDIR		=	obj
-LIBDIR		=	lib
+VPATH		:=	src
+OBJDIR		:=	obj
 
-SRC			=	printf.c \
+SRC			:=	printf.c \
 				parse.c \
 				format.c \
 				display.c
-OBJ			=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
-INCFLAGS	=	-I./$(INCDIR)
+INCFLAGS	=	-I./incld
 AR			=	ar
 ARFLAGS		=	rcs
 RM			=	/bin/rm -rf
@@ -31,8 +29,8 @@ RM			=	/bin/rm -rf
 
 all:			$(NAME)
 
-$(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
-				$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@ -L./$(LIBDIR) -lft
+$(OBJDIR)/%.o:	%.c
+				$(CC) $(CFLAGS) -c $< $(INCFLAGS) -o $@ -L./lib -lft
 
 $(NAME):		$(OBJ)
 				$(AR) $(ARFLAGS) $@ $^
@@ -44,6 +42,6 @@ clean:
 				$(RM) $(OBJ) $(BOBJ)
 
 fclean:			clean
-				$(RM) $(OBJDIR) $(NAME)
+				$(RM) $(NAME)
 
 re:				fclean all

@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 18:36:02 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/14 10:18:27 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*(*g_setf[])(va_list *, t_param *) = { set_char, set_str, set_ul, set_int, 
 int		format_output(va_list *args, t_param *arg)
 {
 	int		type;
-	int		len;
-	char	*str;
+//	int		len;
+//	char	*str;
 
 	type = arg->type;
 	if (type == 0)
