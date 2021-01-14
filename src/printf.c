@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 18:41:09 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/14 15:01:02 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_param(t_param *arg)
 	arg->type = -1;
 	arg->flags = 0;
 	arg->width = 0;
-	arg->precision = 0;
+	arg->precision = -1;
 	arg->s = NULL;
 }
 

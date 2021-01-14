@@ -6,13 +6,13 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 16:53:12 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:42:06 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	g_types[9] = "cspdiuxX";
+char	g_types[9] = "cspudixX";
 
 void	set_precision(va_list *args, t_param *arg, const char **str)
 {
