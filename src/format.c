@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/14 10:18:27 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/14 11:45:34 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		format_output(va_list *args, t_param *arg)
 	type = arg->type;
 	if (type == 0)
 		arg->s = g_setf[0](args, arg);
-/*	else if (type == 1)
+	else if (type == 1)
 		arg->s = g_setf[1](args, arg);
 	else if (type == 2)
 		arg->s = g_setf[2](args, arg);
