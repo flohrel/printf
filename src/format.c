@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/15 18:29:46 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/15 18:52:22 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,32 @@ char	*n_str_alloc(t_param *arg, size_t nb_len)
 	return (nb_str);
 }
 
-char	*itoa_base(long n, char *base, t_bool is_negative)
+char	*n_str_format()
 {
-	
 }
 
-/*void	n_*/
+char	*ft_itoa_base(unsigned long nb, char *base, int bt_size, int is_neg)
+{
+	char		*nb_str;
+
+	g_size++;
+	if (nb >= (unsigned int)bt_size)
+		n = ft_itoa_base(nb / bt_size, base, bt_size, is_neg);
+	else
+	{
+		if (is_neg)
+		{
+			if (!(n = (char *)malloc(sizeof(char) * (g_size += 2))))
+				return (NULL);
+			n[g_idx++] = '-';
+		}
+		else if (!(n = (char *)malloc(sizeof(char) * (g_size += 1))))
+			return (NULL);
+		n[g_size - 1] = '\0';
+	}
+	n[g_idx++] = base[nb % bt_size];
+	return (n);
+}
 
 int		format_output(va_list *args, t_param *arg)
 {
