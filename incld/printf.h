@@ -6,15 +6,18 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/13 18:35:41 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/15 15:42:53 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
+/*
+**		TEMPORARY
+*/
 # include <stdio.h>
-# include <stdlib.h>
+
 # include <stdarg.h>
 # include "flag.h"
 # include "libft.h"
