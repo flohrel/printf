@@ -6,13 +6,13 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:06:56 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/15 13:47:39 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/15 18:07:38 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		str_alloc(t_param *arg, size_t arg_len)
+int		str_alloc(t_param *arg, char *str, size_t arg_len)
 {
 	size_t	str_len;
 
@@ -22,32 +22,33 @@ int		str_alloc(t_param *arg, size_t arg_len)
 		str_len = arg->precision + 1;
 	else
 		str_len = arg_len + 1;
-	arg->s = malloc(sizeof(char) * str_len);
+	str = malloc(sizeof(char) * str_len);
 	return (str_len);
 }
 
 char	*set_str(va_list *args, t_param *arg)
 {
 	char	*tmp;
+	char	*str;
 	size_t	arg_len;
 	size_t	str_len;
-	int		index;
+	size_t	index;
 
 	index = 0;
 	tmp = va_arg(*args, char *);
 	arg_len = ft_strlen(tmp);
 	if (CHK_FLAG(arg->flags, PREC))
 		arg_len = arg->precision;
-	str_len = str_alloc(arg, arg_len);
-	if (!arg->s)
+	str_len = str_alloc(arg, str, arg_len);
+	if (!str)
 		return (NULL);
 	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > arg_len))
 	{
-		ft_memset(arg->s, ' ', str_len);
+		ft_memset(str, ' ', str_len);
 		if (!CHK_FLAG(arg->flags, LEFT))
 			index = str_len - arg_len - 1;
 	}
-	ft_memcpy(arg->s + index, tmp, arg_len);
-	*(arg->s + str_len - 1) = '\0';
-	return (arg->s);
+	ft_memcpy(str + index, tmp, arg_len);
+	*(str + str_len - 1) = '\0';
+	return (str);
 }
