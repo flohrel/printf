@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/15 18:52:22 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/16 19:40:46 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,34 @@ char	*n_str_format()
 {
 }
 
-char	*ft_itoa_base(unsigned long nb, char *base, int bt_size, int is_neg)
+/*char	*ft_itoa_base(unsigned long nb, char *base, size_t base_len, t_bool is_negative)
 {
-	char		*nb_str;
+	char			*nb_str;
+	static size_t	nb_len = 0;
+	static size_t	index = 0;
 
-	g_size++;
-	if (nb >= (unsigned int)bt_size)
-		n = ft_itoa_base(nb / bt_size, base, bt_size, is_neg);
+	nb_len++;
+	if (nb >= base_len)
+		n = ft_itoa_base(nb / base_len, base, base_len, is_negative);
 	else
 	{
+		index = 0;
 		if (is_neg)
 		{
-			if (!(n = (char *)malloc(sizeof(char) * (g_size += 2))))
-				return (NULL);
-			n[g_idx++] = '-';
+			nb_str = ft_calloc(nb_len += 2, sizeof(char));
+			if (n)
+				nb_str[index++] = '-';
 		}
-		else if (!(n = (char *)malloc(sizeof(char) * (g_size += 1))))
+		else
+			nb_str = ft_calloc(nb_len += 1, sizeof(char));
+		if (!n)
 			return (NULL);
-		n[g_size - 1] = '\0';
+		nb_str[nb_len - 1] = '\0';
 	}
-	n[g_idx++] = base[nb % bt_size];
+	nb_str[index++] = base[nb % bt_size];
+	nb_len--;
 	return (n);
-}
+}*/
 
 int		format_output(va_list *args, t_param *arg)
 {
