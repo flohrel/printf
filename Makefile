@@ -6,6 +6,7 @@ NAME		=	libftprintf.a
 
 VPATH		:=	src
 OBJDIR		:=	obj
+LIBDIR		:=	lib
 
 SRC			:=	printf.c \
 				parse.c \
@@ -16,6 +17,7 @@ OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 INCFLAGS	=	-I./incld
+LFLAGS		=	-L./$(LIBDIR) -lft
 AR			=	ar
 ARFLAGS		=	rcs
 RM			=	/bin/rm -rf
@@ -30,7 +32,7 @@ RM			=	/bin/rm -rf
 all:			$(NAME)
 
 $(OBJDIR)/%.o:	%.c
-				$(CC) $(CFLAGS) -c $< $(INCFLAGS) -o $@ -L./lib -lft
+				$(CC) $(CFLAGS) -c $< $(INCFLAGS) -o $@ $(LFLAGS)
 
 $(NAME):		$(OBJ)
 				$(AR) $(ARFLAGS) $@ $^
