@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:37:34 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 17:14:44 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/19 19:02:41 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		main(void)
 {
-	int		n = 0;
-	int		j = 0;
-//	printf("%x %X %08x %-8X %-8.3x %010.9x %0.0x\n", len, len, len, len, len, len, len);
+	unsigned int	len = 987345;
+	int				j = 15;
+	int				n = 18;
+	printf("%u %u %08u %-8u %-8.3u %011.9u %0.0u %*.*u\n", len, len, len, len, len, len, len, n, j, len);
+	ft_printf("%u %u %08u %-8u %-8.3u %011.9u %0.0u %*.*u\n", len, len, len, len, len, len, len, n, j, len);
 //	printf("%015x %021.16d %15X %017.14p %28.16p %2.2p %*.*p\n", len, len, len, &len, &len, &len, n, n, &len);
-	printf("%.*p\n", j, NULL);
-	ft_printf("%.*p", j, NULL);
 }

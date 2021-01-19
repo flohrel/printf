@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 17:14:19 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/19 18:57:32 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ size_t	n_str_alloc(t_param *arg, char **nb_str, size_t nb_len)
 		str_len = arg->precision;
 	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > str_len))
 	{
-		if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, LEFT)))
+		if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, LEFT)) &&
+			!CHK_FLAG(arg->flags, PREC))
 			c = '0';
 		else
 			c = ' ';
@@ -59,7 +60,10 @@ size_t	number_format(t_param *arg, char **tmp, size_t tmp_len)
 			return (arg->precision);
 		}
 		if (!arg->precision && (tmp_len == 1) && (**tmp == '0'))
-			return (NULL);
+		{
+			*tmp = NULL;
+			return (0);
+		}
 	}
 	return (tmp_len);
 }
