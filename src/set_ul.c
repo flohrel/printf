@@ -16,8 +16,6 @@ char			*set_ul(va_list *args, t_param *arg)
 	if (!tmp)
 		return (NULL);
 	tmp_len = number_format(arg, &tmp, ft_strlen(tmp));
-	if (tmp_len == -1)
-		return (NULL);
 	str_len = n_str_alloc(arg, &nb_str, tmp_len + 2);
 	if (str_len == -1)
 		return (NULL);

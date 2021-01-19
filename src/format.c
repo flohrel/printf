@@ -6,14 +6,14 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 16:44:25 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/19 17:14:19 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 char	*(*g_setf[])(va_list *, t_param *) = {
-	set_char, set_str, set_ul, set_int, set_uint, set_hex };
+	set_char, set_str, set_ul, set_uint, set_int, set_hex };
 
 size_t	n_str_alloc(t_param *arg, char **nb_str, size_t nb_len)
 {
@@ -45,16 +45,21 @@ size_t	number_format(t_param *arg, char **tmp, size_t tmp_len)
 {
 	char	*nb_str;
 
-	if (CHK_FLAG(arg->flags, PREC) && (arg->precision > tmp_len))
+	if (CHK_FLAG(arg->flags, PREC))
 	{
-		nb_str = ft_calloc(arg->precision, sizeof(char));
-		if (!nb_str)
-			return (-1);
-		ft_memset(nb_str, '0', arg->precision);
-		ft_memcpy(nb_str + (arg->precision - tmp_len), *tmp, tmp_len);
-		free(*tmp);
-		*tmp = nb_str;
-		return (arg->precision);
+		if (arg->precision > tmp_len)
+		{
+			nb_str = ft_calloc(arg->precision, sizeof(char));
+			if (!nb_str)
+				return (-1);
+			ft_memset(nb_str, '0', arg->precision);
+			ft_memcpy(nb_str + (arg->precision - tmp_len), *tmp, tmp_len);
+			free(*tmp);
+			*tmp = nb_str;
+			return (arg->precision);
+		}
+		if (!arg->precision && (tmp_len == 1) && (**tmp == '0'))
+			return (NULL);
 	}
 	return (tmp_len);
 }
