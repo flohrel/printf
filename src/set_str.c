@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:06:56 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/15 18:07:38 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:12:04 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*set_str(va_list *args, t_param *arg)
 	size_t	index;
 
 	index = 0;
+	str = NULL;
 	tmp = va_arg(*args, char *);
 	arg_len = ft_strlen(tmp);
 	if (CHK_FLAG(arg->flags, PREC))

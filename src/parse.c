@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/14 12:42:06 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/19 16:05:48 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	set_precision(va_list *args, t_param *arg, const char **str)
 	}
 	if (size >= 0)
 		arg->precision = size;
+	else
+		arg->precision = 0;
 }
 
 void	set_width(va_list *args, t_param *arg, const char **str)
@@ -51,8 +53,13 @@ void	set_width(va_list *args, t_param *arg, const char **str)
 		while (ft_isdigit(**str))
 			(*str)++;
 	}
-	if (size > 0)
+	if (size >= 0)
 		arg->width = size;
+	else
+	{
+		SET_FLAG(arg->flags, LEFT);
+		arg->width = size * -1;
+	}
 }
 
 int		set_flags(va_list *args, t_param *arg, const char **str)

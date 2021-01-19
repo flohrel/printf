@@ -15,7 +15,7 @@ SRC			:=	printf.c \
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS		=	-Wall -Werror -Wextra -03 -0fast -fsanitize=address -g3
 INCFLAGS	=	-I./incld
 LFLAGS		=	-L./$(LIBDIR) -lft
 AR			=	ar

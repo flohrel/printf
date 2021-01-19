@@ -3,18 +3,28 @@
 char			*set_ul(va_list *args, t_param *arg)
 {
 	unsigned long	ptr_addr;
-	char			*tmp;
+	int				str_len;
+	int				tmp_len;
+	size_t			index;
 	char			*nb_str;
-	size_t			str_len;
+	char			*tmp;
 
+	nb_str = NULL;
+	index = 2;
 	ptr_addr = (unsigned long)va_arg(*args, void *);
-	tmp = ft_ltoa_base(ptr_addr, "0123456789abcdef");
+	tmp = ft_ultoa_base(ptr_addr, "0123456789abcdef");
 	if (!tmp)
 		return (NULL);
-	str_len = ft_strlen(tmp) + 2;
-	nb_str = n_str_alloc(arg, str_len);
-	nb_str[0] = '0';
-	nb_str[1] = 'x';
+	tmp_len = number_format(arg, &tmp, ft_strlen(tmp));
+	if (tmp_len == -1)
+		return (NULL);
+	str_len = n_str_alloc(arg, &nb_str, tmp_len + 2);
+	if (str_len == -1)
+		return (NULL);
+	if (!CHK_FLAG(arg->flags, LEFT))
+		index = str_len - tmp_len;
+	ft_memcpy(nb_str + index, tmp, tmp_len);
+	ft_memcpy(nb_str + (index - 2), "0x", 2);
 	free(tmp);
-	return (NULL);
+	return (nb_str);
 }
