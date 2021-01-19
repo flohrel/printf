@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 04:37:34 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/18 19:43:39 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 14:50:16 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 15:26:20 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef MEMORY_H
+# define MEMORY_H
 
-int		main(void)
-{
-	int		len = 97589;
-//	printf("%x %X %08x %-8X %-8.3x %010.9x %0.0x\n", len, len, len, len, len, len, len);
-	printf("%p %0.8p %15p %-7.8p %010.9p %2.2p\n", len, len, len, len, len, len, len);
-//	ft_printf("%p %0.8p %-8p %-7.8p %010.9p %2.2p", len, len, len, len, len, len, len);
-}
+# include <stdlib.h>
+# include "type.h"
+# include "string.h"
+
+void			*ft_calloc(size_t nmemb, size_t size);
+
+#endif

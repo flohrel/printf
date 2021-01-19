@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 04:37:34 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/18 19:43:39 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 14:56:49 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 14:59:54 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef TYPE_H
+# define TYPE_H
 
-int		main(void)
-{
-	int		len = 97589;
-//	printf("%x %X %08x %-8X %-8.3x %010.9x %0.0x\n", len, len, len, len, len, len, len);
-	printf("%p %0.8p %15p %-7.8p %010.9p %2.2p\n", len, len, len, len, len, len, len);
-//	ft_printf("%p %0.8p %-8p %-7.8p %010.9p %2.2p", len, len, len, len, len, len, len);
-}
+# include <stdint.h>
+# include <stddef.h>
+# include <limits.h>
+
+# define TRUE		1
+# define FALSE		0
+
+typedef char	t_bool;
+
+#endif

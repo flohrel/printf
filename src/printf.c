@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/16 12:25:43 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/18 19:10:02 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_printf(const char *str, ...)
 				return (ERROR);
 			if (format_output(&args, &arg) == ERROR)
 				return (ERROR);				// FUNCTION POINTER w/ arg->type + malloc arg.s + set arg.s
-			count += ft_putstr_fd(arg->s, STDOUT_FILENO);
+			count += ft_putstr_fd(arg.s, STDOUT_FILENO);
 			free(arg.s);
 		}
 //		else

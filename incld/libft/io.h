@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 04:37:34 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/18 19:43:39 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 15:45:03 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 15:45:55 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef IO_H
+# define IO_H
 
-int		main(void)
-{
-	int		len = 97589;
-//	printf("%x %X %08x %-8X %-8.3x %010.9x %0.0x\n", len, len, len, len, len, len, len);
-	printf("%p %0.8p %15p %-7.8p %010.9p %2.2p\n", len, len, len, len, len, len, len);
-//	ft_printf("%p %0.8p %-8p %-7.8p %010.9p %2.2p", len, len, len, len, len, len, len);
-}
+# include "string.h"
+
+void			ft_putchar_fd(char c, int fd);
+size_t			ft_putstr_fd(char *s, int fd);
+size_t			ft_putendl_fd(char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
+
+#endif
