@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 18:57:32 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/20 14:39:49 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,5 @@ int		format_output(va_list *args, t_param *arg)
 		return (ERROR);
 	return (0);
 }
+
+// printf("type=%d flags=%d width=%d precision=%d string=%s\n", arg->type, arg->flags, arg->width, arg->precision, arg->s);

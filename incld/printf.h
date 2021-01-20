@@ -6,21 +6,19 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 14:55:17 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/20 14:30:53 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-/*
-**		TEMPORARY
-*/
+/* TEMP */
 # include <stdio.h>
 
 # include <stdarg.h>
 # include "flag.h"
-# include "libft.h"
+# include "../libft/incld/libft.h"
 
 # define SUCCESS	0
 # define ERROR		-1
@@ -31,10 +29,10 @@ typedef char	t_bool;
 
 typedef struct	s_param
 {
-	int		type;
-	int		flags;
-	size_t	width;
-	size_t	precision;
+	char		flags;
+	int			type;
+	size_t		width;
+	size_t		precision;
 	char	*s;
 }				t_param;
 

@@ -4,19 +4,26 @@
 
 NAME		=	libftprintf.a
 
-VPATH		:=	src
-OBJDIR		:=	obj
-LIBDIR		:=	lib
+VPATH		=	src
+OBJDIR		=	obj
+LIBDIR		=	libft
+INCLDIR		=	incld
 
-SRC			:=	printf.c \
+SRC			=	printf.c \
 				parse.c \
 				format.c \
-				display.c
+				set_char.c \
+				set_hex.c \
+				set_int.c \
+				set_str.c \
+				set_uint.c \
+				set_ul.c
+LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -03 -0fast -fsanitize=address -g3
-INCFLAGS	=	-I./incld
+CFLAGS		=	-Wall -Werror -Wextra
+INCFLAGS	=	-I./$(INCLDIR)
 LFLAGS		=	-L./$(LIBDIR) -lft
 AR			=	ar
 ARFLAGS		=	rcs
@@ -31,11 +38,16 @@ RM			=	/bin/rm -rf
 
 all:			$(NAME)
 
-$(OBJDIR)/%.o:	%.c
-				$(CC) $(CFLAGS) -c $< $(INCFLAGS) -o $@ $(LFLAGS)
+$(OBJDIR)/%.o:	%.c | $(OBJDIR)
+				$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJ)
+				make -C $(LIBDIR)
+				cp $(LIBDIR)/$(LIB) ./$(NAME)
 				$(AR) $(ARFLAGS) $@ $^
+
+$(OBJDIR):
+				mkdir $(OBJDIR)
 
 bonus:
 				@make all OBJ="$(OBJ) $(BOBJ)"
@@ -44,6 +56,6 @@ clean:
 				$(RM) $(OBJ) $(BOBJ)
 
 fclean:			clean
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(OBJDIR)
 
 re:				fclean all
