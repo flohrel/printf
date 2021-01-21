@@ -1,42 +1,52 @@
 #include "printf.h"
 
-char		*signed_nb_format(t_param *arg, char *tmp)
+char		*signed_nb_format(t_param *arg, char *tmp, t_bool is_neg)
 {
 	int			tmp_len;
 	int			str_len;
 	char		*nb_str;
-	t_bool		is_neg;
+	int			index;
 
-	is_neg = FALSE;
-	if (*tmp == '-')
-	{
-		is_neg = TRUE;
-	}
+	index = 0;
 	tmp_len = number_format(arg, &tmp, ft_strlen(tmp));
 	if (tmp_len == -1)
 		return (NULL);
-	str_len = n_str_alloc(arg, &nb_str, tmp_len);
+	if (is_neg)
+	{
+		index = 1;
+		str_len = n_str_alloc(arg, &nb_str, tmp_len + 1);
+	}
+	else
+		str_len = n_str_alloc(arg, &nb_str, tmp_len);
 	if (str_len == -1)
 		return (NULL);
 	if (!CHK_FLAG(arg->flags, LEFT))
-		ft_memcpy(nb_str + (str_len - tmp_len), tmp, tmp_len);
-	ft_memcpy(nb_str, tmp, tmp_len);
+		index = str_len - tmp_len;
+	ft_memcpy(nb_str + index, tmp, tmp_len);
+	if (is_neg)
+		nb_str[index - 1] = '-';
+	free(tmp);
 	return (nb_str);
 }
 
 char		*set_int(va_list *args, t_param *arg)
 {
-	int			nb;
+	long		nb;
 	char		*nb_str;
 	char		*tmp;
+	t_bool		is_neg;
 
+	is_neg = FALSE;
 	nb_str = NULL;
-	index = 0;
 	nb = va_arg(*args, int);
+	if (nb < 0)
+	{
+		is_neg = TRUE;
+		nb = nb * -1;
+	}
 	tmp = ft_itoa(nb);
 	if (!tmp)
 		return (NULL);
-	nb_str = signed_nb_format(arg, tmp);
-	free(tmp);
+	nb_str = signed_nb_format(arg, tmp, is_neg);
 	return (nb_str);
 }

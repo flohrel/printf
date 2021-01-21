@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/20 16:56:59 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/21 11:13:56 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ size_t	n_str_alloc(t_param *arg, char **nb_str, size_t nb_len)
 		str_len = arg->precision;
 	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > str_len))
 	{
+		c = ' ';
+		str_len = arg->width;
 		if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, LEFT)) &&
 			!CHK_FLAG(arg->flags, PREC))
 			c = '0';
-		else
-			c = ' ';
-		str_len = arg->width;
 	}
 	*nb_str = ft_calloc(str_len + 1, sizeof(char));
 	if (!nb_str)
@@ -42,30 +41,30 @@ size_t	n_str_alloc(t_param *arg, char **nb_str, size_t nb_len)
 	return (str_len);
 }
 
-size_t	number_format(t_param *arg, char **tmp, size_t tmp_len)
+size_t	number_format(t_param *arg, char **nb_str, size_t nb_len)
 {
-	char	*nb_str;
+	char	*tmp;
 
 	if (CHK_FLAG(arg->flags, PREC))
 	{
-		if (arg->precision > tmp_len)
+		if (arg->precision > nb_len)
 		{
-			nb_str = ft_calloc(arg->precision, sizeof(char));
-			if (!nb_str)
+			tmp = ft_calloc(arg->precision, sizeof(char));
+			if (!tmp)
 				return (-1);
-			ft_memset(nb_str, '0', arg->precision);
-			ft_memcpy(nb_str + (arg->precision - tmp_len), *tmp, tmp_len);
-			free(*tmp);
-			*tmp = nb_str;
+			ft_memset(tmp, '0', arg->precision);
+			ft_memcpy(tmp + (arg->precision - nb_len), *nb_str, nb_len);
+			free(*nb_str);
+			*nb_str = tmp;
 			return (arg->precision);
 		}
-		if (!arg->precision && (tmp_len == 1) && (**tmp == '0'))
+		if (!arg->precision && (nb_len == 1) && (**nb_str == '0'))
 		{
-			*tmp = NULL;
+			*nb_str = NULL;
 			return (0);
 		}
 	}
-	return (tmp_len);
+	return (nb_len);
 }
 
 int		format_output(va_list *args, t_param *arg)
