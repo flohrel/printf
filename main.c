@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-	printf("%d\n", -345);
+/*	printf("%d\n", -345);
 	ft_printf("ft:%d\n", -345);
 	printf("%i\n", -2534);
 	ft_printf("%i\n", -2534);
@@ -37,5 +37,16 @@ int	main(void)
 	printf("{%.1c}\n", '\0');
 	ft_printf("{%.1c}\n", '\0');
 	printf("%09.002s\n", "WAiiiiiii");
-	ft_printf("%09.002s\n", "WAiiiiiii");
+	ft_printf("%09.002s\n", "WAiiiiiii");*/
+	ft_printf("%010%\n");
+	ft_printf("%0.s\n", NULL);
+	ft_printf("%0.3s\n", NULL);
+	ft_printf("%5c\n", '*');
+	ft_printf("%010.5i\n", -1548);
+	ft_printf("%05.5i\n", -1548);
+	ft_printf("%.7i\n", -1548);
+	ft_printf("%8.7i\n", -1548);
+	ft_printf("%9.7i\n", -1548);
+	ft_printf("%08i\n", -1548);
+	ft_printf("%05.10u\n", 985);
 }

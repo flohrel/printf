@@ -12,13 +12,13 @@
 
 #include "printf.h"
 
-void	init_param(t_param *arg)
+void	init_struct(t_param *arg)
 {
 	arg->type = -1;
 	arg->flags = 0;
 	arg->width = 0;
 	arg->precision = 0;
-	arg->s = NULL;
+	ft_bzero(arg->buffer, BUF_SIZE);
 }
 
 int		ft_printf(const char *str, ...)
@@ -27,19 +27,18 @@ int		ft_printf(const char *str, ...)
 	va_list	args;
 	size_t	count;
 
-	va_start(args, str);
 	count = 0;
+	va_start(args, str);
 	while (*str != '\0')
 	{
-		if (*str == '%' && (*(++str) != '%'))
+		if ((*str == '%') && (++str))
 		{
-			init_param(&arg);
+			init_struct(&arg);
 			if (parse_param(&args, &arg, &str) == ERROR)
 				return (ERROR);
 			if (format_output(&args, &arg) == ERROR)
 				return (ERROR);
-			count += ft_putstr_fd(arg.s, STDOUT_FILENO);
-			free(arg.s);
+			count += ft_putstr_fd(arg.buffer, STDOUT_FILENO);
 		}
 		else if (++count)
 			ft_putchar_fd(*str, STDOUT_FILENO);

@@ -53,9 +53,3 @@ dkms.conf
 
 # Vim swap files
 *.sw*
-
-# Perso
-README.md
-archives/
-rsrc/
-tester/

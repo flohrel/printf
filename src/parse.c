@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-char	g_types[9] = "cspudixX";
+char	g_types[9] = "cspudixX%";
 
 void	set_precision(va_list *args, t_param *arg, const char **str)
 {

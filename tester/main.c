@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_char.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 16:50:41 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/14 12:08:10 by flohrel          ###   ########.fr       */
+/*   Created: 2020/12/29 04:37:34 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/20 15:11:54 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include <stdio.h>
 
-char	*set_char(va_list *args, t_param *arg)
+int		(*fptr[])(const char *, ...) = { ft_printf, printf };
+
+int		main(void)
 {
-	unsigned char	c;
-	char			*str;
-	int				len;
-
-	c = va_arg(*args, int);
-	len = arg->width;
-	if (len < 1)
-		len = 1;
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	ft_memset(str, ' ', len);
-	if (CHK_FLAG(arg->flags, LEFT))
-		str[0] = c;
-	else
-		str[len - 1] = c;
-	str[len] = '\0';
-	return (str);
+//	unsigned int	len = 987345;
+//	int				j = 15;
+//	int				n = 18;
+	
+	printf("Hello %.s.\n", "Florian");
+	ft_printf("Hello %.s.\n", "Florian");
+	write(1, NULL, 5);
+//	printf("%015x %021.16d %15X %017.14p %28.16p %2.2p %*.*p\n", len, len, len, &len, &len, &len, n, n, &len);
 }
