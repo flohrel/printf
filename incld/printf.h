@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/20 14:30:53 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:23:07 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ typedef struct	s_param
 }				t_param;
 
 extern char		g_types[9];
-//extern char		*(*g_setf[])(va_list *, t_param *);
+extern void		(*g_setf[])(va_list *, t_param *);
 
 int				ft_printf(const char *str, ...);
 int				parse_param(va_list *args, t_param *arg, const char **str);
 int				format_output(va_list *args, t_param *arg);
 int				number_format(t_param *arg, char **tmp, size_t tmp_len);
 int				n_str_alloc(t_param *arg, char **nb_str, size_t nb_len);
-/*char			*set_notype(va_list *args, t_param *arg);
-char			*set_char(va_list *args, t_param *arg);
-char			*set_str(va_list *args, t_param *arg);
-char			*set_ul(va_list *args, t_param *arg);
-char			*set_int(va_list *args, t_param *arg);
-char			*set_uint(va_list *args, t_param *arg);
-char			*set_hex(va_list *args, t_param *arg);*/
+void			set_char(va_list *args, t_param *arg);
+/*void			*set_str(va_list *args, t_param *arg);
+void			*set_ul(va_list *args, t_param *arg);
+void			*set_int(va_list *args, t_param *arg);
+void			*set_uint(va_list *args, t_param *arg);
+void			*set_hex(va_list *args, t_param *arg);
+void			*set_notype(va_list *args, t_param *arg);*/
 
 #endif
