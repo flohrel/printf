@@ -46,9 +46,37 @@ void	str_test(void)
 	ft_printf("%09.8s\n", NULL);
 	printf("%2.3s\n", NULL);
 	ft_printf("%2.3s\n", NULL);
+	printf("%*.*s\n", 0, 0, NULL);
+	ft_printf("%*.*s\n", 0, 0, NULL);
+}
+
+void	ptr_test(void)
+{
+	char	*str = "Ceci est un test.";
+;
+
+	printf("%8p\n", str);
+	ft_printf("%8p\n", str);
+	printf("%.16p\n", str);
+	ft_printf("%.16p\n", str);
+	printf("%15p\n", str);
+	ft_printf("%15p\n", str);
+	printf("%12.3p\n", str);
+	ft_printf("%12.3p\n", str);
+	printf("%-.8p\n", str);
+	ft_printf("%-.8p\n", str);
+	printf("%09.12p\n", str);
+	ft_printf("%09.12p\n", str);
+	printf("%2.3p\n", NULL);
+	ft_printf("%2.3p\n", NULL);
+	printf("%*.*p\n", 0, 0, NULL);
+	ft_printf("%*.*p\n", 0, 0, NULL);
 }
 
 int		main(void)
 {
+	char_test();
 	str_test();
+	ptr_test();
+	return (0);
 }
