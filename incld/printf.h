@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/22 14:23:07 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/22 18:42:47 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define ERROR		-1
 # define FALSE		0
 # define TRUE		1
+# define NULLSTR	"(null)"
 
 typedef char	t_bool;
 
@@ -46,6 +47,7 @@ int				format_output(va_list *args, t_param *arg);
 int				number_format(t_param *arg, char **tmp, size_t tmp_len);
 int				n_str_alloc(t_param *arg, char **nb_str, size_t nb_len);
 void			set_char(va_list *args, t_param *arg);
+void			set_str(va_list *args, t_param *arg);
 /*void			*set_str(va_list *args, t_param *arg);
 void			*set_ul(va_list *args, t_param *arg);
 void			*set_int(va_list *args, t_param *arg);
