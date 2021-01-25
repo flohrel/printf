@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/19 16:05:48 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/25 15:36:02 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	set_width(va_list *args, t_param *arg, const char **str)
 	else
 	{
 		SET_FLAG(arg->flags, LEFT);
-		arg->width = size * -1;
+		arg->width = -size;
 	}
 }
 
