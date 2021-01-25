@@ -46,8 +46,8 @@ void	str_test(void)
 	ft_printf("%9.8s\n", NULL);
 	printf("%2.3s\n", NULL);
 	ft_printf("%2.3s\n", NULL);
-	printf("%*.*s\n", 0, 0, NULL);
-	ft_printf("%*.*s\n", 0, 0, NULL);
+	printf("%.*s\n", -3, "hello");
+	ft_printf("%.*s\n", -3, "hello");
 	printf("%-*.*s\n", -7, -3, str);
 	ft_printf("%-*.*s\n", -7, -3, str);
 }

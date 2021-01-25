@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 13:35:49 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/25 16:11:54 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void			set_uint(va_list *args, t_param *arg);
 void			set_int(va_list *args, t_param *arg);
 void			set_hex(va_list *args, t_param *arg);
 void			set_notype(va_list *args, t_param *arg);
+int				print_out(t_param *arg);
 
 #endif

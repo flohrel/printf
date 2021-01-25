@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/20 14:31:12 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/25 15:50:10 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_printf(const char *str, ...)
 				return (ERROR);
 			if (format_output(&args, &arg) == ERROR)
 				return (ERROR);
-			count += ft_putstr_fd(arg.buffer, STDOUT_FILENO);
+			count += print_out(&arg);
 		}
 		else if (++count)
 			ft_putchar_fd(*str, STDOUT_FILENO);

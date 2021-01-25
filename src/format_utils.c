@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 14:48:09 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/25 15:58:05 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_int(va_list *args, t_param *arg)
 	if (!(tmp = ft_ltoa(nb)) ||
 		(tmp_len = number_format(arg, &tmp, ft_strlen(tmp))) == -1)
 		return ;
-	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > tmp_len + 1) &&
+	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > tmp_len) &&
 		!CHK_FLAG(arg->flags, LEFT))
 		index = arg->width - tmp_len;
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);

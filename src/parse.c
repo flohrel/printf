@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 15:36:02 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/25 16:01:38 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	set_precision(va_list *args, t_param *arg, const char **str)
 	if (size >= 0)
 		arg->precision = size;
 	else
+	{
+		CLR_FLAG(arg->flags, PREC);
 		arg->precision = 0;
+	}
 }
 
 void	set_width(va_list *args, t_param *arg, const char **str)

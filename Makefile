@@ -13,7 +13,8 @@ SRC			=	printf.c \
 				parse.c \
 				format.c \
 				format_utils.c \
-				format_utils2.c
+				format_utils2.c \
+				print.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
