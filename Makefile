@@ -12,12 +12,8 @@ INCLDIR		=	incld
 SRC			=	printf.c \
 				parse.c \
 				format.c \
-				set_char.c \
-				set_hex.c \
-				set_int.c \
-				set_str.c \
-				set_uint.c \
-				set_ul.c
+				format_utils.c \
+				format_utils2.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
