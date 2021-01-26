@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 13:36:26 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:09:19 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ void	set_notype(va_list *args, t_param *arg)
 		!CHK_FLAG(arg->flags, LEFT))
 		index = arg->width - 1;
 	*(arg->buffer + index) = '%';
+}
+
+void	set_count(va_list *args, int count)
+{
+	int	*count_ptr;
+
+	count_ptr = va_arg(*args, int *);
+	*count_ptr = count;
 }

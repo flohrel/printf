@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 15:50:10 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/26 13:47:27 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_printf(const char *str, ...)
 {
 	t_param	arg;
 	va_list	args;
-	size_t	count;
+	int		count;
 
 	count = 0;
 	va_start(args, str);
@@ -36,7 +36,9 @@ int		ft_printf(const char *str, ...)
 			init_struct(&arg);
 			if (parse_param(&args, &arg, &str) == ERROR)
 				return (ERROR);
-			if (format_output(&args, &arg) == ERROR)
+			if (arg.type == 9)
+				set_count(&args, count);
+			else if (format_output(&args, &arg) == ERROR)
 				return (ERROR);
 			count += print_out(&arg);
 		}

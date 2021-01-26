@@ -6,21 +6,18 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 16:11:54 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/26 13:38:18 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-/* TEMP */
-# include <stdio.h>
-
 # include <stdarg.h>
 # include "flag.h"
 # include "../libft/incld/libft.h"
 
-# define BUF_SIZE	4096
+# define BUF_SIZE	16384
 # define SUCCESS	0
 # define ERROR		-1
 # define FALSE		0
@@ -38,7 +35,7 @@ typedef struct	s_param
 	char		buffer[BUF_SIZE];
 }				t_param;
 
-extern char		g_types[9];
+extern char		g_types[10];
 extern void		(*g_setf[])(va_list *, t_param *);
 
 int				ft_printf(const char *str, ...);
@@ -52,6 +49,7 @@ void			set_uint(va_list *args, t_param *arg);
 void			set_int(va_list *args, t_param *arg);
 void			set_hex(va_list *args, t_param *arg);
 void			set_notype(va_list *args, t_param *arg);
+void			set_count(va_list *args, int count);
 int				print_out(t_param *arg);
 
 #endif

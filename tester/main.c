@@ -24,8 +24,8 @@ void	char_test(void)
 	ft_printf("%*c.\n", 0, 42);
 	printf("%c.\n", 42);
 	ft_printf("%c.\n", 42);
-	printf("{%3c}\n", 0);
-	ft_printf("{%3c}\n", 0);
+	printf("{%3c}\n", -0);
+	ft_printf("{%3c}\n", -0);
 }
 
 void	str_test(void)
@@ -46,8 +46,10 @@ void	str_test(void)
 	ft_printf("%9.8s\n", NULL);
 	printf("%2.3s\n", NULL);
 	ft_printf("%2.3s\n", NULL);
-	printf("%*.*s\n", 0, 0, NULL);
-	ft_printf("%*.*s\n", 0, 0, NULL);
+	printf("%.*s\n", -3, "hello");
+	ft_printf("%.*s\n", -3, "hello");
+	printf("%-*.*s\n", -7, -3, str);
+	ft_printf("%-*.*s\n", -7, -3, str);
 }
 
 void	ptr_test(void)
@@ -153,14 +155,67 @@ void	notype_test(void)
 	ft_printf("%2.3%\n");
 }
 
+void	nfge_test(void)
+{
+	int		n = 0;
+
+	printf("%f\n", 98.5467894123);
+	printf("%f %sun truc %d %n %d\n", 98.5467894123, "un truc au pif", n, &n, n);
+	printf("%d\n", n);
+	printf("%e\n", 98.5467894123);
+	printf("%g\n", 98.5467894123);
+	printf("%6f\n", 98.5467894123);
+	printf("%6.5f\n", 98.5497894123);
+	printf("%4.8f\n", 98.5467894123);
+	printf("%6.5e\n", 98.5467894123);
+	printf("%4.8e\n", 98.5467894123);
+	printf("%04f\n", 98.5467894123);
+	printf("%-9g\n", 98.5467894123);
+	printf("%-9f\n", 98.5467894123);
+	printf("%-9e\n", 98.5467894123);
+}
+
+void	count_test(void)
+{
+	int	count, count2;
+
+	printf("oiajwefioja ijargfijg%nfawefaf iuhawef\n", &count);
+	ft_printf("oiajwefioja ijargfijg%nfawefaf iuhawef\n", &count2);
+	printf("%d68 erte4 6q8e4r %n -> %d\n", count, &count, count);
+	ft_printf("%d68 erte4 6q8e4r %n -> %d\n", count2, &count2, count2);
+}
+
+void	altflag_test(void)
+{
+	printf("%#8x\n", -62);
+	ft_printf("%#8x\n", -62);
+	printf("%#.16X\n", -21578);
+	ft_printf("%#.16X\n", -21578);
+	printf("%#15x\n", -42);
+	ft_printf("%#15x\n", -42);
+	printf("%#16.13X\n", -9587);
+	ft_printf("%#16.13X\n", -9587);
+	printf("%#-.8x\n", -9867);
+	ft_printf("%#-.8x\n", -9867);
+	printf("%#09.12X\n", -254);
+	ft_printf("%#09.12X\n", -254);
+	printf("%#2.3x\n", 0);
+	ft_printf("%#2.3x\n", 0);
+	printf("%#*.*X\n", 0, 0, 0);
+	ft_printf("%#*.*X\n", 0, 0, 0);
+}
+
 int		main(void)
 {
-	char_test();
+//	char_test();
 //	str_test();
 //	ptr_test();
 //	uint_test();
 //	int_test();
 //	hex_test();
 //	notype_test();
+//	nfge_test();
+//	count_test();
+	altflag_test();
 	return (0);
 }

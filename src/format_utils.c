@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/25 15:58:05 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/26 14:45:32 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,11 @@ void	set_char(va_list *args, t_param *arg)
 	unsigned char	c;
 
 	c = (unsigned char)va_arg(*args, int);
+
+	if (!arg->width)
+		arg->width++;
 	if (CHK_FLAG(arg->flags, LEFT))
 		*(arg->buffer) = c;
 	else
-	{
-		if (!arg->width)
-			arg->width++;
 		*(arg->buffer + arg->width - 1) = c;
-	}
 }
