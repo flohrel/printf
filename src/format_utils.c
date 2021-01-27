@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/26 14:45:32 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:53:47 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,8 @@ void	set_int(va_list *args, t_param *arg)
 		!CHK_FLAG(arg->flags, LEFT))
 		index = arg->width - tmp_len;
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
-	if (is_neg)
-	{
-		if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, PREC)))
-			*(arg->buffer) = '-';
-		else
-			*(arg->buffer + (index - 1)) = '-';
-	}
+	if (is_neg || CHK_FLAG(arg->flags, SIGN))
+		set_sign(arg, index, is_neg);
 	free(tmp);
 }
 
@@ -74,7 +69,7 @@ void	set_ptr(va_list *args, t_param *arg)
 	char			*tmp;
 	int				tmp_len;
 	size_t			index;
-	
+
 	ptr_addr = (unsigned long)va_arg(*args, void *);
 	tmp = ft_ultoa_base(ptr_addr, "0123456789abcdef");
 	if (!tmp)
@@ -121,7 +116,6 @@ void	set_char(va_list *args, t_param *arg)
 	unsigned char	c;
 
 	c = (unsigned char)va_arg(*args, int);
-
 	if (!arg->width)
 		arg->width++;
 	if (CHK_FLAG(arg->flags, LEFT))

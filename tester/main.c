@@ -205,6 +205,58 @@ void	altflag_test(void)
 	ft_printf("%#*.*X\n", 0, 0, 0);
 }
 
+void	sign_test(void)
+{
+	printf("%+8u\n", 62);
+	ft_printf("%+8u\n", 62);
+	printf("%+.16u\n", 21578);
+	ft_printf("%+.16u\n", 21578);
+	printf("%+15u\n", 42);
+	ft_printf("%+15u\n", 42);
+	printf("%+16.13u\n", 9587);
+	ft_printf("%+16.13u\n", 9587);
+	printf("%+-.8u\n", 9867);
+	ft_printf("%+-.8u\n", 9867);
+	printf("%+09.12u\n", 254);
+	ft_printf("%+09.12u\n", 254);
+	printf("%+2.3u\n", 0);
+	ft_printf("%+2.3u\n", 0);
+	printf("%+*.*u\n", 0, 0, 0);
+	ft_printf("%+*.*u\n", 0, 0, 0);
+	printf("%+8i\n", -62);
+	ft_printf("%+8i\n", -62);
+	printf("%+.16d\n", -21578);
+	ft_printf("%+.16d\n", -21578);
+	printf("%+15i\n", INT_MIN);
+	ft_printf("%+15i\n", INT_MIN);
+	printf("%+16.13d\n", -9587);
+	ft_printf("%+16.13d\n", -9587);
+	printf("%+-.8i\n", -9867);
+	ft_printf("%+-.8i\n", -9867);
+	printf("%+09.12d\n", -254);
+	ft_printf("%+09.12d\n", -254);
+	printf("%+2.3d\n", 0);
+	ft_printf("%+2.3d\n", 0);
+	printf("%+*.*i\n", 0, 0, 0);
+	ft_printf("%+*.*i\n", 0, 0, 0);
+	printf("%+8x\n", -62);
+	ft_printf("%+8x\n", -62);
+	printf("%+.16X\n", -21578);
+	ft_printf("%+.16X\n", -21578);
+	printf("%+15x\n", -42);
+	ft_printf("%+15x\n", -42);
+	printf("%+16.13X\n", -9587);
+	ft_printf("%+16.13X\n", -9587);
+	printf("%+-.8x\n", -9867);
+	ft_printf("%+-.8x\n", -9867);
+	printf("%+09.12X\n", -254);
+	ft_printf("%+09.12X\n", -254);
+	printf("%+2.3x\n", 0);
+	ft_printf("%+2.3x\n", 0);
+	printf("%+*.*X\n", 0, 0, 0);
+	ft_printf("%+*.*X\n", 0, 0, 0);
+}
+
 int		main(void)
 {
 //	char_test();
@@ -216,6 +268,7 @@ int		main(void)
 //	notype_test();
 //	nfge_test();
 //	count_test();
-	altflag_test();
+//	altflag_test();
+	sign_test();
 	return (0);
 }

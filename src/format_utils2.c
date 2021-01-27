@@ -6,11 +6,29 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/26 17:09:19 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/27 15:11:54 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+void	set_sign(t_param *arg, int index, t_bool is_neg)
+{
+	char	c;
+
+	if (is_neg)
+		c = '-';
+	else
+		c = '+';
+	if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, PREC)))
+		*(arg->buffer) = c;
+	else
+		*(arg->buffer + (index - 1)) = c;
+}
+
+//void	set_prefix()
+//{
+//}
 
 void	set_hex(va_list *args, t_param *arg)
 {
@@ -19,14 +37,17 @@ void	set_hex(va_list *args, t_param *arg)
 	size_t			index;
 	char			*tmp;
 
-	index = 0;
 	nb = (unsigned int)va_arg(*args, int);
 	if (arg->type == 6)
 		tmp = ft_ltoa_base(nb, "0123456789abcdef");
 	else
 		tmp = ft_ltoa_base(nb, "0123456789ABCDEF");
-	if (!tmp || (tmp_len = number_format(arg, &tmp, ft_strlen(tmp))) == -1)
+	if (!tmp)
 		return ;
+	tmp_len = number_format(arg, &tmp, ft_strlen(tmp));
+	if (tmp_len == -1)
+		return ;
+	index = 0;
 	if (CHK_FLAG(arg->flags, WIDTH) && (arg->width > tmp_len) &&
 		!CHK_FLAG(arg->flags, LEFT))
 		index = arg->width - tmp_len;
