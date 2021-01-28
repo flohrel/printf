@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/27 14:53:47 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/28 13:32:41 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	set_int(va_list *args, t_param *arg)
 	is_neg = FALSE;
 	nb = va_arg(*args, int);
 	index = 0;
-	if (nb < 0)
+	if (((nb < 0) && (is_neg = TRUE)) || CHK_FLAG(arg->flags, SIGN))
 	{
-		is_neg = TRUE;
 		index = 1;
 		nb = -nb;
 	}
