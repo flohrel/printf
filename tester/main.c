@@ -231,8 +231,8 @@ void	sign_test(void)
 	ft_printf("%+15i\n", INT_MIN);
 	printf("%+16.13d\n", -9587);
 	ft_printf("%+16.13d\n", -9587);
-	printf("%+-.8i\n", -9867);
-	ft_printf("%+-.8i\n", -9867);
+	printf("%-4i\n", -9867);
+	ft_printf("%-4i\n", -9867);
 	printf("%+09.12d\n", -254);
 	ft_printf("%+09.12d\n", -254);
 	printf("%+2.3d\n", 0);
