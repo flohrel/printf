@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/28 13:32:41 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/28 20:46:20 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	set_int(va_list *args, t_param *arg)
 	is_neg = FALSE;
 	nb = va_arg(*args, int);
 	index = 0;
-	if (((nb < 0) && (is_neg = TRUE)) || CHK_FLAG(arg->flags, SIGN))
+	if ((nb < 0) || CHK_FLAG(arg->flags, SIGN) || CHK_FLAG(arg->flags, BLANK))
 	{
+		if ((nb < 0) && (is_neg = TRUE))
+			nb = -nb;
 		index = 1;
-		nb = -nb;
 	}
 	if (!(tmp = ft_ltoa(nb)) ||
 		(tmp_len = number_format(arg, &tmp, ft_strlen(tmp))) == -1)
@@ -35,7 +36,7 @@ void	set_int(va_list *args, t_param *arg)
 		!CHK_FLAG(arg->flags, LEFT))
 		index = arg->width - tmp_len;
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
-	if (is_neg || CHK_FLAG(arg->flags, SIGN))
+	if (is_neg || CHK_FLAG(arg->flags, SIGN) || CHK_FLAG(arg->flags, BLANK))
 		set_sign(arg, index, is_neg);
 	free(tmp);
 }

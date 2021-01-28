@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/28 20:15:07 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/28 20:41:44 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ void	set_sign(t_param *arg, int index, t_bool is_neg)
 	if (is_neg)
 		c = '-';
 	else
-		c = '+';
+	{
+		if (CHK_FLAG(arg->flags, BLANK))
+			c = ' ';
+		else
+			c = '+';
+	}
 	if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, PREC)))
 		*(arg->buffer) = c;
 	else
 		*(arg->buffer + (index - 1)) = c;
-}
-
-void	set_prefix()
-{
 }
 
 void	set_hex(va_list *args, t_param *arg)
