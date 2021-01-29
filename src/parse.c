@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 16:00:38 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:33:15 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_precision(va_list *args, t_param *arg, const char **str)
 	int	size;
 
 	(*str)++;
-	SET_FLAG(&arg->flags, PREC);
+	set_flag(&arg->flags, PREC);
 	if (**str == '*')
 	{
 		size = va_arg(*args, int);
@@ -35,7 +35,7 @@ void	set_precision(va_list *args, t_param *arg, const char **str)
 		arg->precision = size;
 	else
 	{
-		CLR_FLAG(&arg->flags, PREC);
+		clear_flag(&arg->flags, PREC);
 		arg->precision = 0;
 	}
 }
@@ -44,7 +44,7 @@ void	set_width(va_list *args, t_param *arg, const char **str)
 {
 	int	size;
 
-	SET_FLAG(&arg->flags, WIDTH);
+	set_flag(&arg->flags, WIDTH);
 	if (**str == '*')
 	{
 		size = va_arg(*args, int);
@@ -60,7 +60,7 @@ void	set_width(va_list *args, t_param *arg, const char **str)
 		arg->width = size;
 	else
 	{
-		SET_FLAG(&arg->flags, LEFT);
+		set_flag(&arg->flags, LEFT);
 		arg->width = -size;
 	}
 }
@@ -71,15 +71,15 @@ int		set_flags(va_list *args, t_param *arg, const char **str)
 
 	c = **str;
 	if (c == '-')
-		SET_FLAG(&arg->flags, LEFT);
+		set_flag(&arg->flags, LEFT);
 	else if (c == '0')
-		SET_FLAG(&arg->flags, ZERO);
+		set_flag(&arg->flags, ZERO);
 	else if (c == ' ')
-		SET_FLAG(&arg->flags, BLANK);
+		set_flag(&arg->flags, BLANK);
 	else if (c == '+')
-		SET_FLAG(&arg->flags, SIGN);
+		set_flag(&arg->flags, SIGN);
 	else if (c == '#')
-		SET_FLAG(&arg->flags, ALT);
+		set_flag(&arg->flags, ALT);
 	else if (c == '.' || ft_isdigit(c) || c == '*')
 	{
 		if (c == '.')

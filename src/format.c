@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/26 13:39:01 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:34:03 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		number_format(t_param *arg, char **tmp, int tmp_len)
 {
 	char	*nb_str;
 
-	if (CHK_FLAG(arg->flags, PREC))
+	if (check_flag(arg->flags, PREC))
 	{
 		if (arg->precision > tmp_len)
 		{
@@ -48,11 +48,11 @@ void	init_string(t_param *arg)
 	char	c;
 
 	c = 0;
-	if (CHK_FLAG(arg->flags, WIDTH))
+	if (check_flag(arg->flags, WIDTH))
 	{
 		c = ' ';
-		if (CHK_FLAG(arg->flags, ZERO) && !(CHK_FLAG(arg->flags, LEFT)) &&
-			!CHK_FLAG(arg->flags, PREC))
+		if (check_flag(arg->flags, ZERO) && !(check_flag(arg->flags, LEFT)) &&
+			!check_flag(arg->flags, PREC))
 			c = '0';
 	}
 	if (c)

@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 17:19:16 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:38:03 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	set_sign(t_param *arg, int index, t_bool is_neg)
 		c = '-';
 	else
 	{
-		if (CHK_FLAG(&arg->flags, BLANK))
+		if (check_flag(arg->flags, BLANK))
 			c = ' ';
 		else
 			c = '+';
 	}
-	if (CHK_FLAG(&arg->flags, ZERO) && !(CHK_FLAG(&arg->flags, PREC)))
+	if (check_flag(arg->flags, ZERO) && !(check_flag(arg->flags, PREC)))
 		*(arg->buffer) = c;
 	else
 		*(arg->buffer + (index - 1)) = c;
@@ -57,13 +57,13 @@ void	set_hex(va_list *args, t_param *arg)
 	if (tmp_len == -1)
 		return ;
 	index = 0;
-	if (CHK_FLAG(&arg->flags, ALT) && nb)
+	if (check_flag(arg->flags, ALT) && nb)
 		index = 2;
-	if (CHK_FLAG(&arg->flags, WIDTH) && (arg->width > tmp_len) &&
-		!CHK_FLAG(&arg->flags, LEFT))
+	if (check_flag(arg->flags, WIDTH) && (arg->width > tmp_len) &&
+		!check_flag(arg->flags, LEFT))
 		index = arg->width - tmp_len;
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
-	if (CHK_FLAG(&arg->flags, ALT) && nb)
+	if (check_flag(arg->flags, ALT) && nb)
 		set_prefix(arg, index - 2);
 	free(tmp);
 }
@@ -74,8 +74,8 @@ void	set_notype(va_list *args, t_param *arg)
 
 	index = 0;
 	(void)args;
-	if (CHK_FLAG(&arg->flags, WIDTH) && (arg->width > 1) &&
-		!CHK_FLAG(&arg->flags, LEFT))
+	if (check_flag(arg->flags, WIDTH) && (arg->width > 1) &&
+		!check_flag(arg->flags, LEFT))
 		index = arg->width - 1;
 	*(arg->buffer + index) = '%';
 }

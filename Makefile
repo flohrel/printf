@@ -10,12 +10,12 @@ LIBDIR		=	libft
 INCLDIR		=	incld
 
 SRC			=	main.c \
+				flag.c \
 				parse.c \
 				format.c \
 				format_utils.c \
 				format_utils2.c \
-				display.c \
-				flag.c
+				display.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 

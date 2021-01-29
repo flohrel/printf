@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 20:29:06 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 17:28:11 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/29 19:35:43 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define SIGN			64
 
 int		set_flag(char *field, char flag);
-int		check_flag(char *field, char flag);
+int		check_flag(char field, char flag);
 void	clear_flag(char *field, char flag);
 
 #endif
