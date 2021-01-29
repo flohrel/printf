@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag.h                                             :+:      :+:    :+:   */
+/*   flag.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 20:29:06 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 17:28:11 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/29 17:24:18 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAG_H
-# define FLAG_H
+int		SET_FLAG(char *field, char flag)
+{
+	return (*field |= flag);
+}
 
-# define LEFT			1
-# define ZERO			2
-# define PREC			4
-# define WIDTH			8
-# define ALT			16
-# define BLANK			32
-# define SIGN			64
+int		CHK_FLAG(char *field, char flag)
+{
+	return ((*field) & flag);
+}
 
-int		set_flag(char *field, char flag);
-int		check_flag(char *field, char flag);
-void	clear_flag(char *field, char flag);
-
-#endif
+void	CLR_FLAG(char *field, char flag)
+{
+	*field &= ~(flag);
+}

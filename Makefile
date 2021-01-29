@@ -9,12 +9,13 @@ OBJDIR		=	obj
 LIBDIR		=	libft
 INCLDIR		=	incld
 
-SRC			=	printf.c \
+SRC			=	main.c \
 				parse.c \
 				format.c \
 				format_utils.c \
 				format_utils2.c \
-				print.c
+				display.c \
+				flag.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 

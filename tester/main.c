@@ -312,17 +312,17 @@ void	blank_test(void)
 
 int		main(void)
 {
-//	char_test();
-//	str_test();
-//	ptr_test();
-//	uint_test();
-//	int_test();
-//	hex_test();
-//	notype_test();
-//	nfge_test();
-//	count_test();
-//	altflag_test();
-//	sign_test();
+	char_test();
+	str_test();
+	ptr_test();
+	uint_test();
+	int_test();
+	hex_test();
+	notype_test();
+	nfge_test();
+	count_test();
+	altflag_test();
+	sign_test();
 	blank_test();
 	return (0);
 }
