@@ -156,26 +156,6 @@ void	notype_test(void)
 	ft_printf("%2.3%\n");
 }
 
-void	nfge_test(void)
-{
-	int		n = 0;
-
-	printf("%f\n", 98.5467894123);
-	printf("%f %sun truc %d %n %d\n", 98.5467894123, "un truc au pif", n, &n, n);
-	printf("%d\n", n);
-	printf("%e\n", 98.5467894123);
-	printf("%g\n", 98.5467894123);
-	printf("%6f\n", 98.5467894123);
-	printf("%6.5f\n", 98.5497894123);
-	printf("%4.8f\n", 98.5467894123);
-	printf("%6.5e\n", 98.5467894123);
-	printf("%4.8e\n", 98.5467894123);
-	printf("%04f\n", 98.5467894123);
-	printf("%-9g\n", 98.5467894123);
-	printf("%-9f\n", 98.5467894123);
-	printf("%-9e\n", 98.5467894123);
-}
-
 void	count_test(void)
 {
 	int	count, count2;
@@ -310,38 +290,18 @@ void	blank_test(void)
 	ft_printf("% *.*X\n", 0, 0, 0);
 }
 
-void	float_test(void)
-{
-	printf("%f\n", 934558.5467894123);
-	printf("%e\n", 324598.5467894123);
-	printf("%g\n", 432598.5467894123);
-	printf("%+26f\n", 234598.5467894123);
-	printf("%-16.5f\n", 5243598.5497894123);
-	printf("%024.8f\n", 23455498.5467894123);
-	printf("%6.5e\n", 9243558.5467894123);
-	printf("%4.8e\n", -234598.5467894123);
-	printf("% 4.8g\n", 234598.5467894123);
-	printf("%6.5g\n", 9243558.5467894123);
-	printf("%04f\n", -24598.5467894123);
-	printf("%-.2g\n", -24598.5467894123);
-	printf("%-9f\n", -92458.5467894123);
-	printf("%010.0f\n", 23.985);
-}
-
 int		main(void)
 {
-//	char_test();
-//	str_test();
-//	ptr_test();
-//	uint_test();
-//	int_test();
-//	hex_test();
-//	notype_test();
-//	count_test();
-//	altflag_test();
-//	sign_test();
-//	blank_test();
-//	nfge_test();
-	float_test();
+	char_test();
+	str_test();
+	ptr_test();
+	uint_test();
+	int_test();
+	hex_test();
+	notype_test();
+	count_test();
+	altflag_test();
+	sign_test();
+	blank_test();
 	return (0);
 }
