@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "printf.h"
+#include "../includes/ft_printf.h"
+#include <limits.h>
 
 void	char_test(void)
 {
@@ -309,20 +310,38 @@ void	blank_test(void)
 	ft_printf("% *.*X\n", 0, 0, 0);
 }
 
+void	float_test(void)
+{
+	printf("%f\n", 934558.5467894123);
+	printf("%e\n", 324598.5467894123);
+	printf("%g\n", 432598.5467894123);
+	printf("%+26f\n", 234598.5467894123);
+	printf("%-16.5f\n", 5243598.5497894123);
+	printf("%024.8f\n", 23455498.5467894123);
+	printf("%6.5e\n", 9243558.5467894123);
+	printf("%4.8e\n", -234598.5467894123);
+	printf("% 4.8g\n", 234598.5467894123);
+	printf("%6.5g\n", 9243558.5467894123);
+	printf("%04f\n", -24598.5467894123);
+	printf("%-.2g\n", -24598.5467894123);
+	printf("%-9f\n", -92458.5467894123);
+	printf("%010.0f\n", 23.985);
+}
 
 int		main(void)
 {
-	char_test();
-	str_test();
-	ptr_test();
-	uint_test();
-	int_test();
-	hex_test();
-	notype_test();
-	nfge_test();
-	count_test();
-	altflag_test();
-	sign_test();
-	blank_test();
+//	char_test();
+//	str_test();
+//	ptr_test();
+//	uint_test();
+//	int_test();
+//	hex_test();
+//	notype_test();
+//	count_test();
+//	altflag_test();
+//	sign_test();
+//	blank_test();
+//	nfge_test();
+	float_test();
 	return (0);
 }

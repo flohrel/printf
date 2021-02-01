@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 03:57:09 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 15:17:38 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/31 19:42:33 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include "flag.h"
@@ -35,7 +35,7 @@ typedef struct	s_param
 	char		buffer[BUF_SIZE];
 }				t_param;
 
-extern char		g_types[10];
+extern char		g_types[13];
 extern void		(*g_setf[])(va_list *, t_param *);
 
 int				ft_printf(const char *str, ...);
@@ -49,6 +49,7 @@ void			set_uint(va_list *args, t_param *arg);
 void			set_int(va_list *args, t_param *arg);
 void			set_hex(va_list *args, t_param *arg);
 void			set_notype(va_list *args, t_param *arg);
+void			set_float(va_list *args, t_param *arg);
 void			set_count(va_list *args, int count);
 void			set_sign(t_param *arg, int index, t_bool is_neg);
 void			set_prefix(t_param *arg, int index);

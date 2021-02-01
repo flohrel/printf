@@ -6,11 +6,11 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/29 19:40:29 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/01/30 12:43:33 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "ft_printf.h"
 
 int		set_flag(char *field, char flag)
 {

@@ -7,7 +7,7 @@ NAME		=	libftprintf.a
 VPATH		=	src
 OBJDIR		=	obj
 LIBDIR		=	libft
-INCLDIR		=	incld
+INCLDIR		=	includes
 
 SRC			=	main.c \
 				flag.c \
@@ -15,6 +15,7 @@ SRC			=	main.c \
 				format.c \
 				format_utils.c \
 				format_utils2.c \
+				format_utils3.c \
 				display.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
