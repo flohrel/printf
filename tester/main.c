@@ -290,18 +290,43 @@ void	blank_test(void)
 	ft_printf("% *.*X\n", 0, 0, 0);
 }
 
+void	float_test(void)
+{
+	printf("%-8f\n", 0.7698765);
+	ft_printf("%-8f\n", 0.765);
+	printf("%+12.4f\n", 12.75);
+	ft_printf("%+12.4f\n", 12.75);
+	printf("%3.7f\n", 8766.54123);
+	ft_printf("%3.7f\n", 8766.54123);
+	printf("%010.7f\n", 8766.54123);
+	ft_printf("%010.7f\n", 8766.54123);
+	printf("%9.1f\n", 0.231);
+	ft_printf("%9.1f\n", 0.231);
+	printf("%-9f\n", 0.231);
+	ft_printf("%-9f\n", 0.231);
+	printf("% 2.3f\n", 55.7655);
+	ft_printf("% 2.3f\n", 55.7655);
+	printf("%#8.8f\n", 7652.123456);
+	ft_printf("%#8.8f\n", 7652.123456);
+	printf("%0.0f\n", 7652.123456);
+	ft_printf("%0.0f\n", 7652.123456);
+	printf("%.4f\n", 0.231);
+	ft_printf("%.4f\n", 0.231);
+}
+
 int		main(void)
 {
-	char_test();
-	str_test();
-	ptr_test();
-	uint_test();
-	int_test();
-	hex_test();
-	notype_test();
-	count_test();
-	altflag_test();
-	sign_test();
-	blank_test();
+//	char_test();
+//	str_test();
+//	ptr_test();
+//	uint_test();
+//	int_test();
+//	hex_test();
+//	notype_test();
+//	count_test();
+//	altflag_test();
+//	sign_test();
+//	blank_test();
+	float_test();
 	return (0);
 }
