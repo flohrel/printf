@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag.c                                             :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:57:53 by flohrel          ###   ########.fr       */
+/*   Created: 2020/11/01 12:22:47 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 18:43:24 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-int		set_flag(char *field, char flag)
-{
-	return ((*field) |= flag);
-}
+# include "libft/type.h"
+# include "libft/memory.h"
+# include "libft/list.h"
+# include "libft/string.h"
+# include "libft/ctype.h"
+# include "libft/io.h"
+# include "libft/conv.h"
+# include "libft/gnl.h"
 
-int		check_flag(char field, char flag)
-{
-	return (field & flag);
-}
-
-void	clear_flag(char *field, char flag)
-{
-	(*field) &= ~(flag);
-}
+#endif

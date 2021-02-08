@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/01 09:27:00 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/08 13:01:47 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	set_uint(va_list *args, t_param *arg)
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
 	free(tmp);
 }
-
+#include <stdio.h>
 void	set_ptr(va_list *args, t_param *arg)
 {
 	unsigned long	ptr_addr;

@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/01 09:19:54 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/04 04:21:47 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	(*g_setf[])(va_list *, t_param *) = {
 	set_char, set_str, set_ptr, set_uint, set_int, set_int, set_hex, set_hex, \
-	set_notype };
+	set_notype, set_float, set_float, set_float };
 
 int		number_format(t_param *arg, char **tmp, int tmp_len)
 {

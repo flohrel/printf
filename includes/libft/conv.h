@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag.c                                             :+:      :+:    :+:   */
+/*   conv.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:57:53 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 15:32:40 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/18 17:05:01 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef CONV_H
+# define CONV_H
 
-int		set_flag(char *field, char flag)
-{
-	return ((*field) |= flag);
-}
+# include "type.h"
+# include "ctype.h"
+# include "memory.h"
 
-int		check_flag(char field, char flag)
-{
-	return (field & flag);
-}
+int			ft_atoi(const char *nptr);
+char		*ft_itoa(int n);
+char		*ft_ltoa(long n);
+char		*ft_ltoa_base(long n, char *base);
+char		*ft_ultoa_base(unsigned long n, char *base);
 
-void	clear_flag(char *field, char flag)
-{
-	(*field) &= ~(flag);
-}
+#endif

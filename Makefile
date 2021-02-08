@@ -15,7 +15,7 @@ SRC			=	main.c \
 				format.c \
 				format_utils.c \
 				format_utils2.c \
-				format_utils3.c \
+				format_float.c \
 				display.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)

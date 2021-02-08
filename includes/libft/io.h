@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag.c                                             :+:      :+:    :+:   */
+/*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:57:53 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 15:45:03 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 15:45:55 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef IO_H
+# define IO_H
 
-int		set_flag(char *field, char flag)
-{
-	return ((*field) |= flag);
-}
+# include "string.h"
 
-int		check_flag(char field, char flag)
-{
-	return (field & flag);
-}
+void			ft_putchar_fd(char c, int fd);
+size_t			ft_putstr_fd(char *s, int fd);
+size_t			ft_putendl_fd(char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
 
-void	clear_flag(char *field, char flag)
-{
-	(*field) &= ~(flag);
-}
+#endif

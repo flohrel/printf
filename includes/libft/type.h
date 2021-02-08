@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag.c                                             :+:      :+:    :+:   */
+/*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 15:27:25 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:57:53 by flohrel          ###   ########.fr       */
+/*   Created: 2021/01/16 14:56:49 by flohrel           #+#    #+#             */
+/*   Updated: 2021/01/16 14:59:54 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef TYPE_H
+# define TYPE_H
 
-int		set_flag(char *field, char flag)
-{
-	return ((*field) |= flag);
-}
+# include <stdint.h>
+# include <stddef.h>
+# include <limits.h>
 
-int		check_flag(char field, char flag)
-{
-	return (field & flag);
-}
+# define TRUE		1
+# define FALSE		0
 
-void	clear_flag(char *field, char flag)
-{
-	(*field) &= ~(flag);
-}
+typedef char	t_bool;
+
+#endif
