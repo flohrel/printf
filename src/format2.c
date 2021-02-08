@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_utils.c                                     :+:      :+:    :+:   */
+/*   format2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/08 13:01:47 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/08 18:44:23 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	set_int(va_list *args, t_param *arg)
 	is_neg = FALSE;
 	nb = va_arg(*args, int);
 	index = 0;
-	if (((nb < 0) || check_flag(arg->flags, SIGN) ||
-		check_flag(arg->flags, BLANK)) && (++index) && (is_neg = TRUE))
+	if ((nb < 0) && (is_neg = TRUE))
 		nb = -nb;
+	if (check_flag(arg->flags, BLANK + SIGN) || is_neg)
+		index++;
 	if (!(tmp = ft_ltoa(nb)) ||
 		(tmp_len = number_format(arg, &tmp, ft_strlen(tmp))) == -1)
 		return ;
@@ -33,7 +34,7 @@ void	set_int(va_list *args, t_param *arg)
 		!check_flag(arg->flags, LEFT))
 		index = arg->width - tmp_len;
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
-	if (is_neg || check_flag(arg->flags, SIGN) || check_flag(arg->flags, BLANK))
+	if (is_neg || check_flag(arg->flags, BLANK + SIGN))
 		set_sign(arg, index, is_neg);
 	free(tmp);
 }
@@ -59,7 +60,7 @@ void	set_uint(va_list *args, t_param *arg)
 	ft_memcpy(arg->buffer + index, tmp, tmp_len);
 	free(tmp);
 }
-#include <stdio.h>
+
 void	set_ptr(va_list *args, t_param *arg)
 {
 	unsigned long	ptr_addr;

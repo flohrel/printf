@@ -314,19 +314,92 @@ void	float_test(void)
 	ft_printf("%.4f\n", 0.231);
 }
 
+void	lmod_test(void)
+{
+	printf("%8lu\n", 62);
+	ft_printf("%8lu\n", 62);
+	printf("%.16hu\n", 21578);
+	ft_printf("%.16hu\n", 21578);
+	printf("%15llu\n", 42);
+	ft_printf("%15llu\n", 42);
+	printf("%16.13hhu\n", 9587);
+	ft_printf("%16.13hhu\n", 9587);
+	printf("%-.8hu\n", 9867);
+	ft_printf("%-.8hu\n", 9867);
+	printf("% 09.12llu\n", 254);
+	ft_printf("% 09.12llu\n", 254);
+	printf("%2.3llu\n", 0);
+	ft_printf("%2.3llu\n", 0);
+	printf("% *.*hhu\n", 0, 0, 0);
+	ft_printf("% *.*hhu\n", 0, 0, 0);
+	printf("% 8hhi\n", -62);
+	ft_printf("% 8hhi\n", -62);
+	printf("% .16hhd\n", 21578);
+	ft_printf("% .16hhd\n", 21578);
+	printf("% 15hhi\n", INT_MIN);
+	ft_printf("% 15hhi\n", INT_MIN);
+	printf("% 16.13lld\n", 9587);
+	ft_printf("% 16.13lld\n", 9587);
+	printf("% -4li\n", -9867);
+	ft_printf("% -4li\n", -9867);
+	printf("% 09.12hd\n", 254);
+	ft_printf("% 09.12hd\n", 254);
+	printf("% 2.3ld\n", 0);
+	ft_printf("% 2.3ld\n", 0);
+	printf("% *.*hi\n", 0, 0, 0);
+	ft_printf("% *.*hi\n", 0, 0, 0);
+	printf("% 8lx\n", -62);
+	ft_printf("% 8lx\n", -62);
+	printf("% .16llX\n", -21578);
+	ft_printf("% .16llX\n", -21578);
+	printf("% 15hhx\n", -42);
+	ft_printf("% 15hhx\n", -42);
+	printf("% 16.13hX\n", -9587);
+	ft_printf("% 16.13hX\n", -9587);
+	printf("% -.8hhx\n", -9867);
+	ft_printf("% -.8hhx\n", -9867);
+	printf("% 09.12lX\n", -254);
+	ft_printf("% 09.12lX\n", -254);
+	printf("% 2.3hx\n", 0);
+	ft_printf("% 2.3hx\n", 0);
+	printf("% *.*hX\n", 0, 0, 0);
+	ft_printf("% *.*hX\n", 0, 0, 0);
+	printf("%hc\n", 42);
+	ft_printf("%hc\n", 42);
+	printf("%lc\n", 4245);	
+	ft_printf("%lc\n", 4245);
+	printf("%lc\n", 4278);
+	ft_printf("%lc\n", 4278);
+	printf("%hc\n", 4276);
+	ft_printf("%hc\n", 4276);
+	printf("%lc\n", 42123);
+	ft_printf("%lc\n", 42123);
+	printf("%-hc\n", 42);
+	ft_printf("%-hc\n", 42);
+	printf("%hc\n", 4209);
+	ft_printf("%hc\n", 4209);
+	printf("%lc\n", 1242);
+	ft_printf("%lc\n", 1242);
+	printf("%lc\n", 0, 9042);
+	ft_printf("%lc\n", 0, 9042);
+	printf("%hc\n", 4);
+	ft_printf("%hc\n", 4);
+	printf("{%3lc}\n", -0);
+	ft_printf("{%3lc}\n", -0);
+}
+
 int		main(void)
 {
-//	char_test();
-//	str_test();
+	char_test();
+	str_test();
 	ptr_test();
-//	uint_test();
-//	int_test();
+	uint_test();
+	int_test();
 	hex_test();
-//	notype_test();
-//	count_test();
-//	altflag_test();
-//	sign_test();
-//	blank_test();
-//	float_test();
+	notype_test();
+	count_test();
+	altflag_test();
+	sign_test();
+	blank_test();
 	return (0);
 }

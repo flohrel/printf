@@ -12,10 +12,10 @@ INCLDIR		=	includes
 SRC			=	main.c \
 				flag.c \
 				parse.c \
+				parse2.c \
 				format.c \
-				format_utils.c \
-				format_utils2.c \
-				format_float.c \
+				format2.c \
+				format3.c \
 				display.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)

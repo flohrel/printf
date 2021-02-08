@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_utils2.c                                    :+:      :+:    :+:   */
+/*   format3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/30 12:42:16 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/08 18:46:20 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	set_prefix(t_param *arg, int index)
 
 void	set_hex(va_list *args, t_param *arg)
 {
-	unsigned int	nb;
-	int				tmp_len;
-	size_t			index;
-	char			*tmp;
+	long long	nb;
+	int			tmp_len;
+	size_t		index;
+	char		*tmp;
 
 	nb = (unsigned int)va_arg(*args, int);
 	if (arg->type == 6)

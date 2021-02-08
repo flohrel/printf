@@ -6,64 +6,13 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/04 02:58:57 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/08 14:38:28 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 char	g_types[13] = "cspudixX%nfge";
-
-void	set_precision(va_list *args, t_param *arg, const char **str)
-{
-	int	size;
-
-	(*str)++;
-	set_flag(&arg->flags, PREC);
-	if (**str == '*')
-	{
-		size = va_arg(*args, int);
-		(*str)++;
-	}
-	else
-	{
-		size = ft_atoi(*str);
-		while (ft_isdigit(**str))
-			(*str)++;
-	}
-	if (size >= 0)
-		arg->precision = size;
-	else
-	{
-		clear_flag(&arg->flags, PREC);
-		arg->precision = 0;
-	}
-}
-
-void	set_width(va_list *args, t_param *arg, const char **str)
-{
-	int	size;
-
-	set_flag(&arg->flags, WIDTH);
-	if (**str == '*')
-	{
-		size = va_arg(*args, int);
-		(*str)++;
-	}
-	else
-	{
-		size = ft_atoi(*str);
-		while (ft_isdigit(**str))
-			(*str)++;
-	}
-	if (size >= 0)
-		arg->width = size;
-	else
-	{
-		set_flag(&arg->flags, LEFT);
-		arg->width = -size;
-	}
-}
 
 int		set_flags(va_list *args, t_param *arg, const char **str)
 {
@@ -80,14 +29,12 @@ int		set_flags(va_list *args, t_param *arg, const char **str)
 		set_flag(&arg->flags, SIGN);
 	else if (c == '#')
 		set_flag(&arg->flags, ALT);
-	else if (c == '.' || ft_isdigit(c) || c == '*')
-	{
-		if (c == '.')
-			set_precision(args, arg, str);
-		else
-			set_width(args, arg, str);
-		return (1);
-	}
+	else if (c == '.')
+		set_precision(args, arg, str);
+	else if (ft_isdigit(c) || c == '*')
+		set_width(args, arg, str);
+	else if (ft_strchr("hl", c))
+		set_lenmod(arg, str);
 	else
 		return (0);
 	(*str)++;
