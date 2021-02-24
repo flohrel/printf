@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "../includes/ft_printf.h"
+#include "../incld/ft_printf.h"
 #include <limits.h>
 
 void	char_test(void)
 {
 	printf("%8c.\n", 42);
 	ft_printf("%8c.\n", 42);
-	printf("%8c.\n", 42);	
+	printf("%8c.\n", 42);
 	ft_printf("%8c.\n", 42);
 	printf("%88c.\n", 42);
 	ft_printf("%88c.\n", 42);
@@ -364,26 +364,16 @@ void	lmod_test(void)
 	ft_printf("% 2.3hx\n", 0);
 	printf("% *.*hX\n", 0, 0, 0);
 	ft_printf("% *.*hX\n", 0, 0, 0);
-	printf("%hc\n", 42);
-	ft_printf("%hc\n", 42);
-	printf("%lc\n", 4245);	
+	printf("%lc\n", 4245);
 	ft_printf("%lc\n", 4245);
-	printf("%lc\n", 4278);
-	ft_printf("%lc\n", 4278);
-	printf("%hc\n", 4276);
-	ft_printf("%hc\n", 4276);
+	printf("%15lc\n", 4278);
+	ft_printf("%15lc\n", 4278);
 	printf("%lc\n", 42123);
 	ft_printf("%lc\n", 42123);
-	printf("%-hc\n", 42);
-	ft_printf("%-hc\n", 42);
-	printf("%hc\n", 4209);
-	ft_printf("%hc\n", 4209);
 	printf("%lc\n", 1242);
 	ft_printf("%lc\n", 1242);
 	printf("%lc\n", 0, 9042);
 	ft_printf("%lc\n", 0, 9042);
-	printf("%hc\n", 4);
-	ft_printf("%hc\n", 4);
 	printf("{%3lc}\n", -0);
 	ft_printf("{%3lc}\n", -0);
 }
@@ -401,5 +391,7 @@ int		main(void)
 	altflag_test();
 	sign_test();
 	blank_test();
+	float_test();
+	lmod_test();
 	return (0);
 }

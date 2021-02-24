@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:55:28 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:46:20 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/10 18:03:52 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ void	set_prefix(t_param *arg, int index)
 
 void	set_hex(va_list *args, t_param *arg)
 {
-	long long	nb;
-	int			tmp_len;
-	size_t		index;
-	char		*tmp;
+	unsigned long long	nb;
+	int					tmp_len;
+	size_t				index;
+	char				*tmp;
 
-	nb = (unsigned int)va_arg(*args, int);
+	nb = unsigned_lenmod(args, arg);
 	if (arg->type == 6)
-		tmp = ft_ltoa_base(nb, "0123456789abcdef");
+		tmp = ft_lltoa_base(nb, "0123456789abcdef");
 	else
-		tmp = ft_ltoa_base(nb, "0123456789ABCDEF");
+		tmp = ft_lltoa_base(nb, "0123456789ABCDEF");
 	if (!tmp)
 		return ;
 	tmp_len = number_format(arg, &tmp, ft_strlen(tmp));

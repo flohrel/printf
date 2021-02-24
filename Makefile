@@ -4,10 +4,10 @@
 
 NAME		=	libftprintf.a
 
-VPATH		=	src
+VPATH		=	src src/format src/parse
 OBJDIR		=	obj
 LIBDIR		=	libft
-INCLDIR		=	includes
+INCLDIR		=	incld
 
 SRC			=	main.c \
 				flag.c \
@@ -16,13 +16,16 @@ SRC			=	main.c \
 				format.c \
 				format2.c \
 				format3.c \
+				format4.c \
+				format5.c \
+				lenmod.c \
 				display.c
 LIB			=	libft.a
 OBJ			=	$(SRC:%.c=$(OBJDIR)/%.o)
 
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
-INCFLAGS	=	-I./$(INCLDIR)
+INCFLAGS	=	-I./$(INCLDIR) -I./$(LIBDIR)/$(INCLDIR)
 LFLAGS		=	-L./$(LIBDIR) -lft
 AR			=	ar
 ARFLAGS		=	rcs

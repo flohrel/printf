@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:23:53 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:44:23 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/15 15:36:13 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	set_int(va_list *args, t_param *arg)
 {
-	long		nb;
+	long long	nb;
 	char		*tmp;
 	int			index;
 	int			tmp_len;
 	t_bool		is_neg;
 
 	is_neg = FALSE;
-	nb = va_arg(*args, int);
+	nb = signed_lenmod(args, arg);
 	index = 0;
 	if ((nb < 0) && (is_neg = TRUE))
 		nb = -nb;
@@ -41,12 +41,12 @@ void	set_int(va_list *args, t_param *arg)
 
 void	set_uint(va_list *args, t_param *arg)
 {
-	unsigned int	nb;
-	int				tmp_len;
-	size_t			index;
-	char			*tmp;
+	unsigned long long	nb;
+	int					tmp_len;
+	size_t				index;
+	char				*tmp;
 
-	nb = (unsigned int)va_arg(*args, int);
+	nb = unsigned_lenmod(args, arg);
 	tmp = ft_ltoa(nb);
 	if (!tmp)
 		return ;
@@ -87,16 +87,14 @@ void	set_ptr(va_list *args, t_param *arg)
 
 void	set_str(va_list *args, t_param *arg)
 {
-	char	*str;
-	int		str_len;
-	size_t	index;
+	char			*str;
+	int				str_len;
+	size_t			index;
 
 	str = va_arg(*args, char *);
-	str_len = 0;
+	str_len = 6;
 	if (str)
 		str_len = ft_strlen(str);
-	else
-		str_len = 6;
 	if (check_flag(arg->flags, PREC) && (arg->precision < str_len))
 		str_len = arg->precision;
 	index = 0;
@@ -111,7 +109,7 @@ void	set_str(va_list *args, t_param *arg)
 
 void	set_char(va_list *args, t_param *arg)
 {
-	unsigned char	c;
+	char	c;
 
 	c = (unsigned char)va_arg(*args, int);
 	if (!arg->width)

@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 04:39:21 by flohrel           #+#    #+#             */
-/*   Updated: 2021/01/30 12:42:46 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/15 17:12:40 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_struct(t_param *arg)
 	arg->width = 0;
 	arg->precision = 0;
 	ft_bzero(arg->buffer, BUF_SIZE);
+	arg->wc_buf = NULL;
 }
 
 int		ft_printf(const char *str, ...)
@@ -36,7 +37,7 @@ int		ft_printf(const char *str, ...)
 			init_struct(&arg);
 			if (parse_param(&args, &arg, &str) == ERROR)
 				return (ERROR);
-			if (arg.type == 9)
+			if (arg.type == 12)
 				set_count(&args, count);
 			else if (format_output(&args, &arg) == ERROR)
 				return (ERROR);

@@ -6,7 +6,7 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:58:44 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:55:14 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/19 11:26:21 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	(*g_setf[])(va_list *, t_param *) = {
 	set_char, set_str, set_ptr, set_uint, set_int, set_int, set_hex, set_hex, \
-	set_notype };
+	set_notype, set_float };
 
 int		number_format(t_param *arg, char **tmp, int tmp_len)
 {
@@ -52,7 +52,7 @@ void	init_string(t_param *arg)
 	{
 		c = ' ';
 		if (check_flag(arg->flags, ZERO) && !(check_flag(arg->flags, LEFT)) &&
-			!check_flag(arg->flags, PREC))
+			(!check_flag(arg->flags, PREC) || (arg->type == 8)))
 			c = '0';
 	}
 	if (c)
@@ -61,7 +61,17 @@ void	init_string(t_param *arg)
 
 int		format_output(va_list *args, t_param *arg)
 {
-	init_string(arg);
-	g_setf[arg->type](args, arg);
+	if ((arg->type < 2) && check_flag(arg->flags, LMOD_L))
+	{
+		if (arg->type == 0)
+			set_wchar(args, arg);
+		else
+			set_wcs(args, arg);
+	}
+	else
+	{
+		init_string(arg);
+		g_setf[arg->type](args, arg);
+	}
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: flohrel <flohrel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:56:32 by flohrel           #+#    #+#             */
-/*   Updated: 2021/02/08 14:38:28 by flohrel          ###   ########.fr       */
+/*   Updated: 2021/02/15 16:21:57 by flohrel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	g_types[13] = "cspudixX%nfge";
+char	g_types[13] = "cspudixX%fgen";
 
 int		set_flags(va_list *args, t_param *arg, const char **str)
 {
@@ -48,7 +48,7 @@ int		set_type(const char **str)
 
 	i = -1;
 	c = **str;
-	while (g_types[++i])
+	while (**str && g_types[++i])
 		if (c == g_types[i])
 			return (i);
 	return (ERROR);
@@ -56,7 +56,7 @@ int		set_type(const char **str)
 
 int		parse_param(va_list *args, t_param *arg, const char **str)
 {
-	while (set_flags(args, arg, str))
+	while (**str && set_flags(args, arg, str))
 		;
 	arg->type = set_type(str);
 	if (arg->type == -1)
